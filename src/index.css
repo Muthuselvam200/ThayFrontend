@@ -1,11 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #f8f9fb;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,7 +23,7 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  margin-top: 50px;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -57,12 +57,76 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f8f9fb;
   }
   a:hover {
     color: #747bff;
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 100% of the viewport height */
+}
+
+.googlemaps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0; /* Optional: Removes border around iframe */
+}
+
+label {
+  color: #111111;
+}
+
+.aboutUsImage {
+  width: 100%;
+  height: 100%;
+}
+
+.aboutus {
+  margin-top: 50px;
+}
+
+
+.client-images-container {
+  overflow: hidden;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  animation: scroll-right 20s linear infinite; 
+}
+
+.image-set {
+  display: flex;
+}
+
+.client-image {
+  width: 150px; 
+  height: auto;
+  flex-shrink: 0; 
+  margin-right: 20px; 
+}
+
+@keyframes scroll-right {
+  100% {
+    transform: translateX(-50%);
+  }
+  0% {
+    transform: translateX(0); 
+  }
+}
+
+@media (max-width: 767px) {
+  .client-image {
+    width: 100px; 
   }
 }

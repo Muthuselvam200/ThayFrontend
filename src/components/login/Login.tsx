@@ -22,7 +22,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await fetch('https://thay-backend.vercel.app/api/auth/login', {
+      const response = await fetch('https://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,13 +114,6 @@ const Login: React.FC = () => {
           )}
         </div>
       </div>
-      <style>
-        {`
-        body {
-          background: linear-gradient(to right, lightblue, #ffffff);
-        }
-      `}
-      </style>
     </div>
   );
 };

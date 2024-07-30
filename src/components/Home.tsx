@@ -1,13 +1,13 @@
-import axios from 'axios';
-import { CSSProperties, useEffect, useState } from 'react';
-import { useAuth } from './login/AuthContext';
+import axios from "axios";
+import { CSSProperties, useEffect, useState } from "react";
+import { useAuth } from "./login/AuthContext";
 
 function Home() {
   const [employee, setEmployee] = useState<any>({});
   const { token, employeeID } = useAuth();
 
   const employeecall = () => {
-    const baseUrl = 'https://thay-backend.vercel.app';
+    const baseUrl = "https://thay-backend.vercel.app";
     axios
       .get(`${baseUrl}/api/employee/${employeeID}`, {
         headers: {
@@ -27,76 +27,48 @@ function Home() {
     employeecall();
   }, [token, employeeID]);
 
-  const containerStyle: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    minHeight: '100vh',
-    background: 'linear-gradient(to right, lightblue, #ffffff)',
-    padding: '20px 0',
-    margin: '0',
-  };
-
-  const contentStyle: CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    width: '100%',
-  };
-
-  const textContainerStyle: CSSProperties = {
-    textAlign: 'center',
-    maxWidth: '600px',
-    margin: '0 20px',
-  };
-
   const imageContainerStyle: CSSProperties = {
-    maxWidth: '700px',
-    marginBottom: '20px',
-  };
-
-  const headerStyle: CSSProperties = {
-    color: 'black',
-    fontSize: '2em',
-    fontFamily: 'Garamond, serif',
-    textTransform: 'uppercase',
+    maxWidth: "768px",
+    marginBottom: "40px",
   };
 
   const imageStyle: CSSProperties = {
-    width: '100%',
-    height: 'auto',
+    maxWidth: "100%",
+    maxHeight: "100%",
   };
 
   return (
     <>
-      <div style={containerStyle}>
-        <div style={contentStyle}>
-          <div style={imageContainerStyle}>
-            <img
-              src="/web-des.svg"
-              alt="Description"
-              style={imageStyle}
-            />
-          </div>
-          <div style={textContainerStyle}>
-            <h2 style={headerStyle}>THAY TECH WELCOMES YOU<br />{employee.employeeName}</h2>
-            <br />
-            <p style={{ fontFamily: 'Times New Roman, Times, serif' }}>
-              Thay Technologies is an IT Solutions firm based in Chennai.<br /> With its state-of-the-art infrastructure and amicable location in the heart of the city, 
-              Thay Technologies intends to add value to IT companies.
-            </p>
+      <section className="py-3 py-md-5 py-xl-8">
+        <div className="container">
+          <div className="row align-items-center">
+            <div>
+              <h2 className="fs-1 mb-2 text-secondary">
+                Welcome to THAY Tech!
+                <br />
+                {employee.employeeName}
+              </h2>
+              <p
+                className="display-5 mb-2 text-secondary"
+                style={{ fontSize: "18px" }}
+              >
+                Thay Technologies is an IT Solutions firm based in Chennai.
+                <br /> With its state-of-the-art infrastructure and amicable
+                location in the heart of <br />
+                the city, Thay Technologies intends to add value to IT
+                companies.
+              </p>
+            </div>
+            <div style={imageContainerStyle}>
+              <img
+                src="src/assets/images/web-des.svg"
+                alt="Description"
+                style={imageStyle}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <style>
-        {`
-          body {
-            background: linear-gradient(to right, lightblue, #ffffff);
-          }
-        `}
-      </style>
+      </section>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
+import "../nav/navbar.css";
 import AlertMessage from '../AlertMessage';
 
 const SignUp: React.FC = () => {
@@ -25,7 +26,7 @@ const SignUp: React.FC = () => {
       return;
     }
 
-    fetch(`https://thay-backend.vercel.app/api/auth/signup`, {
+    fetch(`https://localhost:5000/api/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="container" id="loginbox" style={{ marginBottom: '100px' }}>
+    <div className="container" id="loginbox" style={{ marginTop: '40px' }}>
       <div className="auth-wrapper">
         <div className="auth-inner">
           <form onSubmit={handleSubmit}>
@@ -129,13 +130,6 @@ const SignUp: React.FC = () => {
           )}
         </div>
       </div>
-      <style>
-        {`
-          body {
-            background: linear-gradient(to right, lightblue, #ffffff);
-          }
-        `}
-      </style>
     </div>
   );
 };
